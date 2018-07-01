@@ -1,5 +1,5 @@
 import sys
-import requests
+from . import fido
 import xml.etree.ElementTree as etree
 
 def name():
@@ -70,9 +70,10 @@ class XmlSoccer(object):
         data = []
         try:
             # make the request
-            r = requests.get(address, params=params)
+            f = fido.Fetch()
+            f.get(address, params=params)
             # parse the xml
-            root = etree.fromstring(r.text)
+            root = etree.fromstring(f.text)
             if len(root) == 0:
                 raise(Exception(root.text))
             for child in list(root):

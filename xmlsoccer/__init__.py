@@ -1,1 +1,1 @@
-from .xmlsoccer import name
+from .xmlsoccer import XmlSoccer, name
