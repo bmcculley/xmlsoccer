@@ -5,7 +5,12 @@ Python 3 patch, with less dependencies.
 
 Simple Python client for interacting with the [XmlSoccer](http://www.xmlsoccer.com/) API.
 
-# Basic Usage #
+## Installing
+
+ * `git clone https://github.com/bmcculley/xmlsoccer.git`
+ * `python setup.py install`
+
+## Basic Usage
 
 All of the XmlSoccer API methods can be accessed via the `call_api` function, as shown in the example below. 
 
