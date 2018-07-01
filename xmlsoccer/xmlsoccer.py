@@ -1,8 +1,12 @@
+import sys
 import requests
-from lxml import etree
+import xml.etree.ElementTree as etree
 
+def name():
+    return "xmlsoccer"
 
 class XmlSoccer(object):
+
     def __init__(self, api_key=None, use_demo=False):
         """Inits xmlsoccer class
         :param api_key: your api key
@@ -68,7 +72,7 @@ class XmlSoccer(object):
             # make the request
             r = requests.get(address, params=params)
             # parse the xml
-            root = etree.XML(r.text.encode('utf-8'))
+            root = etree.fromstring(r.text)
             if len(root) == 0:
                 raise(Exception(root.text))
             for child in list(root):
@@ -76,24 +80,8 @@ class XmlSoccer(object):
                 for element in list(child):
                     tmp[element.tag] = element.text
                 data.append(tmp)
-        except Exception, e:
-            print str(e)
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
+            raise
         # return the results
         return data
-
-
-def test():
-    xmlsoccer = XmlSoccer(api_key='''GCVMINBHMWBPAJCAFTPREBLHPELIKMDNMWRESVUTPQBXOOAWWQ''',
-                          use_demo=True)
-
-    fixtures = xmlsoccer.call_api(method='GetHistoricMatchesByLeagueAndSeason',
-                                  seasonDateString='1314',
-                                  league='Scottish Premier League')
-
-    teams = xmlsoccer.call_api(method='GetAllTeams')
-
-    leagues = xmlsoccer.call_api(method='GetAllLeagues')
-
-    standings = xmlsoccer.call_api(method='GetLeagueStandingsBySeason',
-                                   seasonDateString='1314',
-                                   league='Scottish Premier League')

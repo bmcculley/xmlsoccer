@@ -1,0 +1,1 @@
+from .xmlsoccer import name

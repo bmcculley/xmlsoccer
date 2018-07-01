@@ -1,5 +1,7 @@
 XmlSoccer Parser
-=========
+================
+
+Python 3 patch, with less dependencies.
 
 Simple Python client for interacting with the [XmlSoccer](http://www.xmlsoccer.com/) API.
 
