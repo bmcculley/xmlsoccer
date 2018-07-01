@@ -10,9 +10,10 @@ Simple Python client for interacting with the [XmlSoccer](http://www.xmlsoccer.c
 All of the XmlSoccer API methods can be accessed via the `call_api` function, as shown in the example below. 
 
 ```python
-from xmlsoccer import xmlsoccer
+from xmlsoccer.xmlsoccer import XmlSoccer
 
-xmls = XmlSoccer(api_key=YOUR_API_KEY, use_demo=False)
+xmls = XmlSoccer(api_key=YOUR_API_KEY, 
+            use_demo=True)
 
 fixtures = xmls.call_api(method='GetHistoricMatchesByLeagueAndSeason',
                         seasonDateString='1314',
@@ -22,9 +23,9 @@ teams = xmls.call_api(method='GetAllTeams')
 
 leagues = xmls.call_api(method='GetAllLeagues')
 
-standings = xmlsoccer.call_api(method='GetLeagueStandingsBySeason',
+standings = xmls.call_api(method='GetLeagueStandingsBySeason',
                                seasonDateString='1314',
-                               league='English Premier League')
+                               league='Scottish Premier League')
 ```
 
 # compatibility #

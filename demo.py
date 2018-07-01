@@ -1,6 +1,6 @@
-from xmlsoccer import xmlsoccer
+from xmlsoccer.xmlsoccer import XmlSoccer
 
-xmls = xmlsoccer.XmlSoccer(api_key=YOUR_API_KEY, 
+xmls = XmlSoccer(api_key=YOUR_API_KEY, 
             use_demo=True)
 
 fixtures = xmls.call_api(method='GetHistoricMatchesByLeagueAndSeason',
@@ -11,6 +11,6 @@ teams = xmls.call_api(method='GetAllTeams')
 
 leagues = xmls.call_api(method='GetAllLeagues')
 
-standings = xmlsoccer.call_api(method='GetLeagueStandingsBySeason',
+standings = xmls.call_api(method='GetLeagueStandingsBySeason',
                                seasonDateString='1314',
                                league='Scottish Premier League')
